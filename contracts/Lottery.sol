@@ -1,10 +1,18 @@
 pragma solidity ^0.4.17;
 
-
 contract Lottery {
-    address public mannager;
+    address public manager;
+    address[] public players;
 
-    function Lottery() public {
-        
+    constructor() public {
+        manager = msg.sender;
     }
+
+    function enterLottery() public payable{
+        require(msg.value > .01 ether);
+
+        players.push(msg.sender);
+    }
+
+    
 }
